@@ -100,7 +100,7 @@
             </a>
             
             <div class="flex items-center" id="progress-container">
-                </div>
+            </div>
         </header>
 
         <main id="main-content" class="flex-1 overflow-y-auto overflow-x-hidden flex flex-col items-center p-6 sm:p-10 lg:p-12 relative scroll-smooth bg-white">
@@ -258,7 +258,7 @@
                 fullName: '', email: '', address: '', status: '', availability: '',
                 resume: null, video: null, isVideoTooLarge: false, videoUrl: '',
                 portfolioUrl: '', interest: '', tools: [], fitReason: '',
-                consent1: false, consent2: false, consent3: false, consent4: false
+                consent4: false
             }
         };
 
@@ -344,8 +344,8 @@
         }
 
         async function submitApplication() {
-            if (!state.formData.consent1 || !state.formData.consent2 || !state.formData.consent3 || !state.formData.consent4) {
-                return setError('You must agree to all terms before submitting.');
+            if (!state.formData.consent4) {
+                return setError('You must authorize data storage before submitting.');
             }
             
             state.isLoading = true;
@@ -845,9 +845,6 @@
             }
             else if (state.step === 4) {
                 const consents = [
-                    { id: 'consent1', text: "I understand this is an execution-focused internship to evaluate my readiness for a long-term junior role." },
-                    { id: 'consent2', text: "I agree to strict confidentiality regarding all client data, account access, and internal processes." },
-                    { id: 'consent3', text: "I acknowledge the compensation structure (₱350 per day for the 2-month duration)." },
                     { id: 'consent4', text: "I authorize Agora Data Driven to securely store my uploaded files and personal data for recruitment and evaluation purposes." }
                 ];
 
@@ -910,7 +907,7 @@
                     <div class="max-w-lg mx-auto mt-auto mb-auto text-center slide-up">
                         <div class="w-40 h-40 sm:w-52 sm:h-52 bg-white/50 rounded-full flex items-center justify-center mx-auto mb-10 shadow-inner shadow-green-50 ring-4 ring-green-50">
                             <div class="w-full h-full flex items-center justify-center p-3 sm:p-4 fade-in">
-                                <img src="./agora-icon.png" onerror="this.src='https://placehold.co/100x100?text=Check'" alt="Agora Data Driven Icon" class="w-full h-full object-contain drop-shadow-sm" />
+                                <img src="./logo.png" onerror="this.src='https://placehold.co/100x100?text=Check'" alt="Agora Data Driven Icon" class="w-full h-full object-contain drop-shadow-sm" />
                             </div>
                         </div>
                         <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Application Received!</h2>

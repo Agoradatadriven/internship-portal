@@ -449,11 +449,13 @@
                         <p class="text-base sm:text-lg lg:text-xl text-slate-600 mb-12 max-w-xl mx-auto leading-relaxed">
                             Join the Agora Lead Generation Team. We are seeking driven, detail-oriented interns ready to execute high-performance campaigns and master digital growth.
                         </p>
-                        <button onclick="nextStep()" class="btn-agora btn-agora-inline mx-auto">
-                            <span class="text-container">
-                                <span class="text">Start Application <i data-lucide="arrow-right" class="w-5 h-5 shrink-0"></i></span>
-                            </span>
-                        </button>
+                        <div class="flex justify-center w-full mt-2">
+                            <button onclick="nextStep()" class="btn-agora btn-agora-inline">
+                                <span class="text-container">
+                                    <span class="text">Start Application <i data-lucide="arrow-right" class="w-5 h-5 shrink-0"></i></span>
+                                </span>
+                            </button>
+                        </div>
                     </div>
                 `;
             } 
@@ -514,8 +516,8 @@
                         
                         ${ErrorComponent()}
 
-                        <div class="mt-10">
-                            <button onclick="nextStep()" class="btn-agora mt-2 w-full max-w-sm mx-auto">
+                        <div class="mt-10 flex w-full justify-center">
+                            <button onclick="nextStep()" class="btn-agora mt-2 w-full max-w-sm">
                                 <span class="text-container"><span class="text">Next Step <i data-lucide="arrow-right" class="w-5 h-5 shrink-0"></i></span></span>
                             </button>
                         </div>
@@ -605,8 +607,8 @@
 
                         ${ErrorComponent()}
 
-                        <div class="mt-10">
-                            <button onclick="nextStep()" class="btn-agora mt-2 w-full max-w-sm mx-auto">
+                        <div class="mt-10 flex w-full justify-center">
+                            <button onclick="nextStep()" class="btn-agora mt-2 w-full max-w-sm">
                                 <span class="text-container"><span class="text">Next Step <i data-lucide="arrow-right" class="w-5 h-5 shrink-0"></i></span></span>
                             </button>
                         </div>
@@ -665,8 +667,8 @@
 
                         ${ErrorComponent()}
 
-                        <div class="mt-10">
-                            <button onclick="nextStep()" class="btn-agora mt-2 w-full max-w-sm mx-auto">
+                        <div class="mt-10 flex w-full justify-center">
+                            <button onclick="nextStep()" class="btn-agora mt-2 w-full max-w-sm">
                                 <span class="text-container"><span class="text">Next Step <i data-lucide="arrow-right" class="w-5 h-5 shrink-0"></i></span></span>
                             </button>
                         </div>
@@ -724,8 +726,8 @@
 
                         ${ErrorComponent()}
 
-                        <div class="mt-10 pt-4 border-t border-slate-100">
-                            <button onclick="submitApplication()" ${state.isLoading?'disabled':''} class="btn-agora mt-2 w-full max-w-sm mx-auto">
+                        <div class="mt-10 pt-4 border-t border-slate-100 flex justify-center w-full">
+                            <button onclick="submitApplication()" ${state.isLoading?'disabled':''} class="btn-agora mt-2 w-full max-w-sm">
                                 <span class="text-container">
                                     <span class="text">
                                         ${state.isLoading ? `<i data-lucide="loader-2" class="animate-spin w-5 h-5 shrink-0"></i> Processing Securely...` : `Submit Full Application`}

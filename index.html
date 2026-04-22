@@ -95,24 +95,19 @@
 <body class="bg-[#f8fafc] font-sans text-slate-900 selection:bg-[#4cac4c]/20 min-h-[100dvh] flex items-center justify-center md:p-6 lg:p-8">
     <div class="relative w-full md:max-w-4xl flex flex-col bg-white min-h-[100dvh] md:min-h-0 md:h-[720px] md:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] md:rounded-3xl overflow-hidden ring-1 ring-slate-900/5">
         
-        <!-- Header -->
         <header class="bg-white border-b border-slate-100 px-6 sm:px-10 py-5 flex justify-between items-center shrink-0 z-20">
             <a href="https://agoradatadriven.com" target="_blank" rel="noopener noreferrer" class="flex items-center cursor-pointer group">
                 <img src="./logo.png" onerror="this.src='https://placehold.co/120x40?text=Agora'" alt="Agora Data Driven Logo" class="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" referrerpolicy="no-referrer" />
             </a>
             
             <div class="flex items-center" id="progress-container">
-                <!-- Injected via JS -->
-            </div>
+                </div>
         </header>
 
-        <!-- Main Area -->
         <main id="main-content" class="flex-1 overflow-y-auto overflow-x-hidden flex flex-col items-center p-6 sm:p-10 lg:p-12 relative scroll-smooth bg-white">
-            <!-- Steps container dynamically rendered via JS -->
             <div id="step-container" class="w-full flex-1 flex flex-col items-center"></div>
         </main>
 
-        <!-- Footer -->
         <footer class="px-6 sm:px-10 py-5 border-t border-slate-100 flex flex-col sm:flex-row justify-center items-center text-xs text-slate-400 font-semibold tracking-wider uppercase shrink-0 gap-4 sm:gap-0 z-10 w-full bg-slate-50/50 backdrop-blur-sm">
             <div class="flex items-center justify-center gap-4 w-full">
                 <span>&copy; <span id="current-year"></span> Agora</span>
@@ -124,7 +119,6 @@
         </footer>
     </div>
 
-    <!-- Agreement Modal -->
     <div id="agreement-modal" class="fixed inset-0 z-50 p-4 min-[400px]:p-6 hidden-step">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeAgreement()"></div>
         <div class="relative w-full max-w-3xl max-h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden mx-auto mt-10 slide-up">
@@ -251,7 +245,6 @@
         </div>
     </div>
 
-    <!-- MAIN APP SCRIPT -->
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
@@ -371,9 +364,12 @@
                 let resumeB64 = state.formData.resume ? await toBase64(state.formData.resume) : '';
                 let videoB64 = state.formData.video ? await toBase64(state.formData.video) : '';
                 
+                // --- PAYLOAD FIXED HERE ---
                 const payload = {
                     fullName: state.formData.fullName,
                     email: state.formData.email,
+                    address: state.formData.address, // Correctly added
+                    status: state.formData.status,   // Correctly added
                     availability: state.formData.availability,
                     resumeName: state.formData.resume?.name || '',
                     resumeMimeType: state.formData.resume?.type || '',

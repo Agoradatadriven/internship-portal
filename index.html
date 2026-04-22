@@ -118,132 +118,6 @@
         </footer>
     </div>
 
-    <div id="agreement-modal" class="fixed inset-0 z-50 p-4 min-[400px]:p-6 hidden-step">
-        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeAgreement()"></div>
-        <div class="relative w-full max-w-3xl max-h-[85vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden mx-auto mt-10 slide-up">
-            <div class="flex justify-between items-center p-6 sm:p-8 border-b border-slate-100 shrink-0">
-                <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Internship Summary & Agreement</h2>
-                    <p class="text-sm font-medium text-[#4cac4c] mt-1">Please read carefully</p>
-                </div>
-                <button onclick="closeAgreement()" class="p-2 sm:p-2.5 text-slate-400 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 rounded-full transition-colors flex shrink-0">
-                    <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6" stroke-width="2.5"></i>
-                </button>
-            </div>
-            
-            <div class="flex-1 overflow-y-auto p-0 sm:p-6 bg-slate-50">
-                <div class="bg-white mx-auto max-w-2xl sm:rounded-xl shadow-sm border-x border-b sm:border border-slate-200 p-8 sm:p-12">
-                    <div class="flex justify-between items-end border-b-2 border-slate-900 pb-6 mb-8">
-                        <div>
-                            <img src="./logo.png" onerror="this.src='https://placehold.co/120x40?text=Agora'" alt="Agora Logo" class="h-10 w-auto mb-4" />
-                            <h1 class="text-2xl font-black text-slate-900 tracking-tight uppercase">Internship Program</h1>
-                            <p class="text-slate-500 font-medium text-sm tracking-widest uppercase mt-1">Official Framework & Agreement</p>
-                        </div>
-                    </div>
-
-                    <div class="prose prose-sm sm:prose-base max-w-none text-slate-600 prose-headings:text-slate-900 prose-headings:font-bold prose-h3:text-xl prose-h3:uppercase prose-h3:tracking-wide prose-h4:text-lg prose-ul:list-disc prose-ul:pl-5 marker:text-[#4cac4c] space-y-4">
-                        <h3 class="!mt-0 flex items-center gap-3">
-                            <span class="flex items-center justify-center w-8 h-8 rounded bg-slate-100 text-slate-900 text-sm">1.0</span>
-                            Application Process Summary
-                        </h3>
-                        <p>This internship is execution-focused. It is designed for applicants who are willing to learn through real work, follow systems, and grow into a strong support role in lead generation and paid media operations. We value attitude, reliability, and attention to detail as much as prior experience.</p>
-                        <ul class="space-y-1">
-                            <li><strong>Step 1: Application Submission</strong> - Submit your resume, short introduction, availability, and answers to the application questions.</li>
-                            <li><strong>Step 2: Initial Screening and Assessment Task</strong> - Shortlisted applicants will complete a short practical task.</li>
-                            <li><strong>Step 3: Interview, Final Decision, and Internship Offer</strong> - Finalists will be interviewed before the final decision is made.</li>
-                        </ul>
-                        <hr class="my-6 border-t border-slate-200" />
-                        
-                        <h3 class="flex items-center gap-3">
-                            <span class="flex items-center justify-center w-8 h-8 rounded bg-slate-100 text-slate-900 text-sm">2.0</span>
-                            Role Summary & Basics
-                        </h3>
-                        <p>This internship is designed to train and evaluate someone for a potential long-term role in our Lead Generation Team. The team supports media buying, Meta Ads, Google Ads, lead generation campaigns, and creative execution.</p>
-                        <h4>What the Intern Will Help With:</h4>
-                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
-                            <li>Campaign setup support</li>
-                            <li>Creative editing (Canva, CapCut)</li>
-                            <li>QA and checklist support</li>
-                            <li>Reporting updates</li>
-                            <li>Funnel and lead flow checks</li>
-                            <li>File and asset organization</li>
-                            <li>Basic campaign operations support</li>
-                        </ul>
-                        <h4>What the Intern Will Not Own Yet:</h4>
-                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
-                            <li>Campaign strategy</li>
-                            <li>Budget decisions</li>
-                            <li>Client communication</li>
-                            <li>Final launch approvals</li>
-                            <li>Major optimization decisions</li>
-                            <li>Unsupervised live account changes</li>
-                        </ul>
-                        <hr class="my-6 border-t border-slate-200" />
-                        
-                        <h3 class="flex items-center gap-3">
-                            <span class="flex items-center justify-center w-8 h-8 rounded bg-slate-100 text-slate-900 text-sm">3.0</span>
-                            What We Look For in Applicants
-                        </h3>
-                        <p>We are not only looking for experience. We are mainly looking for people who show:</p>
-                        <ul class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1">
-                            <li>Reliability</li>
-                            <li>Attention to detail</li>
-                            <li>Coachability</li>
-                            <li>Clear communication</li>
-                            <li>Strong work ethic</li>
-                            <li>Willingness to learn</li>
-                        </ul>
-                        <hr class="my-6 border-t border-slate-200" />
-                        
-                        <h3 class="flex items-center gap-3">
-                            <span class="flex items-center justify-center w-8 h-8 rounded bg-slate-100 text-slate-900 text-sm">4.0</span>
-                            Payment Structure
-                        </h3>
-                        <ul class="space-y-1">
-                            <li><strong>Compensation rate:</strong> ₱350 per day</li>
-                            <li><strong>Payment basis:</strong> per day attended/worked</li>
-                            <li><strong>Internship duration:</strong> 2 months</li>
-                            <li><strong>Estimated monthly allowance:</strong> approximately ₱7,700/month based on 22 working days. Actual monthly total will depend on the number of working days attended.</li>
-                        </ul>
-                        <p class="text-[13px] text-slate-500 bg-slate-100/50 p-3 rounded-lg border border-slate-200 mt-2">
-                            The internship allowance is intended to support interns during the training and execution period. Payment is based on actual attendance and completed internship working days. Absences, unpaid leave, or unworked days will not be included unless otherwise approved. The internship allowance does not guarantee regular employment after the program.
-                        </p>
-                        <hr class="my-6 border-t border-slate-200" />
-
-                        <h3 class="flex items-center gap-3">
-                            <span class="flex items-center justify-center w-8 h-8 rounded bg-slate-100 text-slate-900 text-sm">5.0</span>
-                            Career Ladder
-                        </h3>
-                        <p>Interns who successfully complete the internship and meet performance standards may be considered for a junior role. The team structure progresses as follows:</p>
-                        <ul class="space-y-2 list-none pl-0">
-                            <li><strong class="text-slate-900">1. Lead Generation Team Intern</strong> - Learns the workflow and supports execution.</li>
-                            <li><strong class="text-slate-900">2. Junior Lead Generation Team Member</strong> - Handles recurring campaign and operations work under supervision.</li>
-                            <li><strong class="text-slate-900">3. Department Head / Team Lead</strong> - Leads execution quality, workflow, and team output.</li>
-                            <li><strong class="text-slate-900">4. Client Account Manager</strong> - Owns client communication, expectations, and account direction.</li>
-                        </ul>
-                        
-                        <h3 class="flex items-center gap-3 text-red-600 border-t border-slate-200 mt-8 pt-8">
-                            <span class="flex items-center justify-center w-8 h-8 rounded bg-red-100 text-red-900 text-sm">6.0</span>
-                            Confidentiality and Data Handling
-                        </h3>
-                        <p class="font-medium text-slate-700">Client data, account access, reports, files, and internal processes are confidential.</p>
-                        <ul class="space-y-1">
-                            <li>Do not share, copy, forward, or reuse company or client materials outside approved channels.</li>
-                            <li>Do not use personal accounts unless approved.</li>
-                            <li>Do not make live changes in accounts without approval.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="p-6 sm:p-8 border-t border-slate-100 shrink-0 bg-slate-50/50 flex justify-end">
-                <button onclick="closeAgreement()" class="btn-agora btn-agora-inline">
-                    <span class="text-container"><span class="text">I Have Read the Agreement</span></span>
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
@@ -537,17 +411,6 @@
 
         window.triggerFileInput = function(id) {
             document.getElementById(id).click();
-        };
-
-        window.openAgreement = function() {
-            document.getElementById('agreement-modal').classList.remove('hidden-step');
-            document.getElementById('agreement-modal').classList.add('flex');
-            lucide.createIcons();
-        };
-
-        window.closeAgreement = function() {
-            document.getElementById('agreement-modal').classList.add('hidden-step');
-            document.getElementById('agreement-modal').classList.remove('flex');
         };
 
         window.reloadPage = function() {
@@ -868,23 +731,6 @@
                                 <p class="text-slate-500 mt-2">Acknowledge agreement to finalize.</p>
                             </div>
                             <button onclick="prevStep()" ${state.isLoading?'disabled':''} class="text-sm font-semibold text-slate-400 hover:text-slate-700 flex items-center gap-1.5 disabled:opacity-50"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back</button>
-                        </div>
-                        
-                        <div class="mb-8">
-                            <button onclick="openAgreement()" class="w-full relative overflow-hidden group bg-gradient-to-br from-slate-50 to-slate-100 hover:from-white hover:to-slate-50 border border-slate-200 hover:border-[#4cac4c] p-6 rounded-2xl transition-all shadow-sm flex items-center justify-between cursor-pointer">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-[#4cac4c]/10 text-[#4cac4c] rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#4cac4c]/20 transition-all">
-                                        <i data-lucide="file-text" class="w-6 h-6" stroke-width="2.5"></i>
-                                    </div>
-                                    <div class="text-left">
-                                        <h3 class="font-bold text-slate-900 text-lg group-hover:text-[#4cac4c] transition-colors">Read the Full Internship Agreement</h3>
-                                        <p class="text-slate-500 text-sm font-medium mt-0.5">Please review the details before submitting.</p>
-                                    </div>
-                                </div>
-                                <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center shrink-0 group-hover:border-[#4cac4c] group-hover:bg-[#4cac4c] transition-all">
-                                    <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-white transition-colors"></i>
-                                </div>
-                            </button>
                         </div>
 
                         <div class="space-y-4">${consentsHtml}</div>

@@ -83,9 +83,6 @@
         .slide-up { animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
         .fade-in { animation: fadeIn 0.3s ease forwards; }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
         /* Custom scrollbar matching Tailwind's scrollbar-thin logic */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
@@ -248,7 +245,8 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcRieJ2M2OGry9Mx44VdYm5djXMQP7jnro3z_heCpOkzbKHFNYwCjLerbX5h9Kgg8W/exec';
+        // YOUR NEW WEB APP URL HAS BEEN ADDED HERE
+        const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbLGWSqZgJx1irsAudaPDl5ib7En8PtZS6-Cj1TojLWd6dXT25rk1zD9HNkTbqTGaX/exec';
 
         const state = {
             step: 0,
@@ -351,7 +349,6 @@
             state.isLoading = true;
             setError('');
             
-            // Direct DOM update instead of full render refresh
             const submitBtn = document.getElementById('submit-btn');
             if(submitBtn) {
                 submitBtn.disabled = true;
@@ -364,12 +361,11 @@
                 let resumeB64 = state.formData.resume ? await toBase64(state.formData.resume) : '';
                 let videoB64 = state.formData.video ? await toBase64(state.formData.video) : '';
                 
-                // --- PAYLOAD FIXED HERE ---
                 const payload = {
                     fullName: state.formData.fullName,
                     email: state.formData.email,
-                    address: state.formData.address, // Correctly added
-                    status: state.formData.status,   // Correctly added
+                    address: state.formData.address,
+                    status: state.formData.status,  
                     availability: state.formData.availability,
                     resumeName: state.formData.resume?.name || '',
                     resumeMimeType: state.formData.resume?.type || '',
@@ -390,7 +386,7 @@
                     body: JSON.stringify(payload)
                 });
                 
-                state.step = 5; // Success
+                state.step = 5; 
                 resetScroll();
             } catch (err) {
                 console.error(err);
@@ -399,7 +395,7 @@
             } finally {
                 state.isLoading = false;
                 if(state.step === 5) {
-                    render(); // Only render if we reached step 5
+                    render(); 
                 } else {
                     const submitBtn = document.getElementById('submit-btn');
                     if(submitBtn) {
@@ -411,7 +407,6 @@
             }
         }
 
-        // Global Event Handlers attached to window so inline handlers work
         window.updateField = function(key, value, shouldRender = true) {
             state.formData[key] = value;
             if (shouldRender) {
@@ -787,7 +782,6 @@
                     </div>
                 `;
             }
-            // Add other steps dynamically...
             else if (state.step === 3) {
                 const interestHtml = ['Lead Generation', 'Meta Ads', 'Google Ads', 'Creative Execution', 'Reporting', 'Campaign Operations'].map(area => `
                     <button onclick="selectInterest('${area}')" data-area="${area}" class="interest-btn relative p-4 rounded-xl border text-sm font-semibold transition-all duration-200 text-center flex flex-col items-center justify-center gap-2 h-full cursor-pointer ${state.formData.interest === area ? 'border-[#4cac4c] bg-[#4cac4c]/5 text-[#4cac4c] shadow-sm ring-1 ring-[#4cac4c]' : 'border-slate-200 bg-white hover:border-[#4cac4c]/50 text-slate-600 hover:bg-slate-50'}">

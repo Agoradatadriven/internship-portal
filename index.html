@@ -212,6 +212,14 @@
             state.step++;
             resetScroll();
             render();
+            
+            // NEW: Tell Google Analytics the applicant moved to the next step
+            if (typeof gtag === 'function') {
+                gtag('event', 'page_view', {
+                    page_title: 'Step ' + state.step,
+                    page_path: '/step-' + state.step
+                });
+            }
         }
 
         function prevStep() {
@@ -219,6 +227,14 @@
             state.step--;
             resetScroll();
             render();
+            
+            // NEW: Tell Google Analytics the applicant went back to a previous step
+            if (typeof gtag === 'function') {
+                gtag('event', 'page_view', {
+                    page_title: 'Step ' + state.step,
+                    page_path: '/step-' + state.step
+                });
+            }
         }
 
         function resetScroll() {

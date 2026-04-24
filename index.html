@@ -130,7 +130,6 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // YOUR NEW WEB APP URL HAS BEEN ADDED HERE
         const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwbLGWSqZgJx1irsAudaPDl5ib7En8PtZS6-Cj1TojLWd6dXT25rk1zD9HNkTbqTGaX/exec';
 
         const state = {
@@ -211,7 +210,6 @@
             resetScroll();
             render();
             
-            // NEW: Tell Google Analytics the applicant moved to the next step
             if (typeof gtag === 'function') {
                 gtag('event', 'page_view', {
                     page_title: 'Step ' + state.step,
@@ -226,7 +224,6 @@
             resetScroll();
             render();
             
-            // NEW: Tell Google Analytics the applicant went back to a previous step
             if (typeof gtag === 'function') {
                 gtag('event', 'page_view', {
                     page_title: 'Step ' + state.step,
@@ -421,15 +418,6 @@
             const file = input.files[0];
             if (type === 'resume') {
                 state.formData.resume = file || null;
-            } else if (type === 'video') {
-                if (file && file.size > 40 * 1024 * 1024) {
-                    state.formData.video = null;
-                    state.formData.isVideoTooLarge = true;
-                } else {
-                    state.formData.video = file || null;
-                    state.formData.isVideoTooLarge = false;
-                    state.formData.videoUrl = '';
-                }
             }
             render();
         };
@@ -590,43 +578,12 @@
                     <p class="text-slate-400 text-sm">PDF, DOC, DOCX up to 10MB</p>
                 `;
 
-                const videoHtml = state.formData.isVideoTooLarge ? `
-                    <div class="bg-amber-50/50 border border-amber-200 rounded-2xl p-5 sm:p-6 shadow-xs text-left fade-in cursor-default" onclick="event.stopPropagation()">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
-                                <i data-lucide="alert-circle" class="w-5 h-5 text-amber-600"></i>
-                            </div>
-                            <div class="w-full pt-1">
-                                <p class="text-amber-900 text-sm font-bold mb-1">File too large (Max 40MB)</p>
-                                <p class="text-amber-700/80 text-sm mb-4 leading-relaxed">Please upload it to Google Drive or Loom and paste the link below instead.</p>
-                                <div class="relative">
-                                    <i data-lucide="link" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4"></i>
-                                    <input type="url" placeholder="https://drive.google.com/..." value="${state.formData.videoUrl}" oninput="updateField('videoUrl', this.value, false)" class="w-full pl-10 pr-4 py-3 bg-white border border-amber-200 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10 text-sm shadow-sm" />
-                                </div>
-                                <button onclick="updateField('isVideoTooLarge', false); updateField('videoUrl', '')" class="text-xs text-amber-700 hover:text-amber-900 font-bold mt-4 underline underline-offset-2">Retry Upload (Smaller file)</button>
-                            </div>
-                        </div>
-                    </div>
-                ` : `
-                    <input type="file" id="videoInput" accept="video/*" onchange="handleFileUpload('video', this)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
-                    <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4 transition-colors ${state.formData.video ? 'bg-[#4cac4c]/10' : 'bg-white shadow-sm border border-slate-100'}">
-                        <i data-lucide="upload-cloud" class="w-7 h-7 ${state.formData.video ? 'text-[#4cac4c]' : 'text-slate-400'}"></i>
-                    </div>
-                    ${state.formData.video ? `
-                        <p class="text-[#4cac4c] font-semibold text-base break-all px-4">${state.formData.video.name}</p>
-                        <p class="text-slate-400 text-xs">Click to replace file</p>
-                    ` : `
-                        <p class="text-slate-700 font-semibold">Click to upload video</p>
-                        <p class="text-slate-400 text-sm">MP4, WEBM, MOV up to 40MB</p>
-                    `}
-                `;
-
                 content = `
                     <div class="w-full max-w-xl text-left mt-auto mb-auto slide-up">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
                             <div>
                                 <h2 class="text-3xl font-bold text-slate-900">Assets & Material</h2>
-                                <p class="text-slate-500 mt-2">Upload your resume and video introduction.</p>
+                                <p class="text-slate-500 mt-2">Upload your resume or CV.</p>
                             </div>
                             <button onclick="prevStep()" class="text-sm font-semibold text-slate-400 hover:text-slate-700 flex items-center gap-1.5"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back</button>
                         </div>
@@ -640,16 +597,6 @@
                                         <i data-lucide="upload-cloud" class="w-7 h-7 ${state.formData.resume ? 'text-[#4cac4c]' : 'text-slate-400'}"></i>
                                     </div>
                                     ${resumeHtml}
-                                </div>
-                            </div>
-
-                            <div class="space-y-2">
-                                <label class="text-sm font-semibold text-slate-700 block">
-                                    A short introduction about yourself (video) <span class="text-red-500">*</span>
-                                    <span class="block text-xs text-slate-500 font-normal mt-1 mb-2 leading-relaxed">Tell us who you are, why you're interested in data-driven marketing, and what excites you about this internship.</span>
-                                </label>
-                                <div class="relative ${!state.formData.isVideoTooLarge ? 'bg-slate-50 border-2 border-dashed cursor-pointer' : ''} ${state.formData.video ? 'border-[#4cac4c] bg-green-50/20' : 'border-slate-200'} rounded-2xl ${!state.formData.isVideoTooLarge ? 'p-8 flex flex-col items-center justify-center text-center' : ''}">
-                                    ${videoHtml}
                                 </div>
                             </div>
 

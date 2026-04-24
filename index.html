@@ -202,8 +202,6 @@
             }
             if (state.step === 2) {
                 if (!state.formData.resume) return setError('Please upload your Resume/CV.');
-                if (!state.formData.video && !state.formData.isVideoTooLarge && !state.formData.videoUrl) return setError('Please upload a video introduction or provide a link.');
-                if (state.formData.isVideoTooLarge && !state.formData.videoUrl.trim()) return setError('Please provide a link to your video introduction.');
             }
             if (state.step === 3) {
                 if (!state.formData.interest) return setError('Please select your area of interest.');
